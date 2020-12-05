@@ -1,0 +1,43 @@
+﻿<h4>Hello {{currentUser.firstName}} welcome to Auditor page!</h4>
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" style="width:100%" >
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element;let i = index"> {{i+1}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName +' '+element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user name">
+        <th mat-header-cell *matHeaderCellDef> User Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+  
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="IP address">
+        <th mat-header-cell *matHeaderCellDef> IP Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.IP || ''}} </td>
+      </ng-container>
+  
+    <ng-container matColumnDef="logIn">
+      <th mat-header-cell *matHeaderCellDef> LogIn at </th>
+      <td mat-cell *matCellDef="let element"> {{element.logIn | date:'medium'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="logOut">
+        <th mat-header-cell *matHeaderCellDef> LogOut at </th>
+        <td mat-cell *matCellDef="let element"> {{element.logOut ? (element.logOut | date:'medium') : ''}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>
